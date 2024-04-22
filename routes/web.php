@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GSocialiteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+// Create Route For GSocialite
+Route::get('/auth/google/redirect', [GSocialiteController::class, 'redirect'])->name('google.auth');
+Route::get('/auth/google/callback', [GSocialiteController::class, 'callback']);
